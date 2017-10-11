@@ -31,4 +31,12 @@ public class Result {
 		return points.get(index);
 	}
 
+	public void setPoint(int index, String point) {
+		points.set(index, point);
+	}
+
+	public void update(int position, String point) {
+		points.set(position - 1, point);
+	}
+
 }

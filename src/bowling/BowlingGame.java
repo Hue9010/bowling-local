@@ -10,12 +10,19 @@ import bowling.view.BowlingResultView;
 
 public class BowlingGame {
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		int number = BowlingFormView.inputPeopleNumbers(scanner);
+		BowlingFormView.setupScnner();
+
+		int number = BowlingFormView.inputPeopleNumbers();
 		List<Player> players = new ArrayList<Player>();
 		for (int i = 0; i < number; i++) {
-			players.add(new Player(BowlingFormView.inputName(scanner, i + 1)));
+			players.add(new Player(BowlingFormView.inputName(i + 1)));
 		}
-		BowlingResultView.showResult(players);
+		for (int i = 0; i < 10; i++) {
+			for (Player player : players) {
+				player.playRound();
+				BowlingResultView.showResult(players);
+			}
+		}
+		BowlingFormView.closeScnner();
 	}
 }
