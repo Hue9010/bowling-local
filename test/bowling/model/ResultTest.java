@@ -31,7 +31,7 @@ public class ResultTest {
 	@Test
 	public void 쓰러트린_핀에_값을_Result에_적용시키자() {
 		Result result = Result.initResult();
-		result.setPoint(1,"3|4");
+		result.update(2,"3|4");
 		assertEquals("3|4",result.getPoints(1));
 	}
 
