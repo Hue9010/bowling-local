@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import bowling.model.Player;
 import bowling.view.BowlingFormView;
+import bowling.view.BowlingResultView;
 
 public class BowlingGame {
 	public static void main(String[] args) {
@@ -15,5 +16,6 @@ public class BowlingGame {
 		for (int i = 0; i < number; i++) {
 			players.add(new Player(BowlingFormView.inputName(scanner, i + 1)));
 		}
+		BowlingResultView.showResult(players);
 	}
 }
