@@ -1,5 +1,7 @@
 package bowling.model;
 
-public class Result {
+import java.util.List;
 
+public class Result {
+	List<Integer> scores;
 }
