@@ -24,15 +24,15 @@ public class ResultTest {
 			points.add("   ");
 		}
 		for (int i = 0; i < 10; i++) {
-			assertEquals(points.get(i), result.getPoints(i));
+			assertEquals(points.get(i), result.getKnockedPins(i));
 		}
 	}
-	
+
 	@Test
 	public void 쓰러트린_핀에_값을_Result에_적용시키자() {
 		Result result = Result.initResult();
-		result.update(2,"3|4");
-		assertEquals("3|4",result.getPoints(1));
+		result.update("3|4");
+		assertEquals("3|4", result.getKnockedPins(0));
 	}
 
 }

@@ -1,14 +1,14 @@
 package bowling.model;
 
 public class Frame {
-	private StringBuilder point;
-	private int knockedPins;
-	private boolean chance;
-	private int times;
+	protected StringBuilder point;
+	protected int knockedPin;
+	protected boolean chance;
+	protected int times;
 
 	public Frame() {
 		point = new StringBuilder();
-		knockedPins = 0;
+		knockedPin = 0;
 		chance = true;
 		times = 0;
 	}
@@ -19,12 +19,12 @@ public class Frame {
 
 	public void inputKnockedPins(int number) {
 		times++;
-		knockedPins += number;
+		knockedPin += number;
 		calculatePoint(number);
 	}
 
 	public void calculatePoint(int number) {
-		if (knockedPins == 10) {
+		if (knockedPin == 10) {
 			point.append(strikeOrSpare());
 			return;
 		}
@@ -36,7 +36,7 @@ public class Frame {
 		point.append("|");
 	}
 
-	private String strikeOrSpare() {
+	protected String strikeOrSpare() {
 		endThisFrame();
 		if (times == 2) {
 			return "/";
@@ -48,7 +48,7 @@ public class Frame {
 		return chance;
 	}
 
-	private void endThisFrame() {
+	protected void endThisFrame() {
 		chance = !chance;
 	}
 }
