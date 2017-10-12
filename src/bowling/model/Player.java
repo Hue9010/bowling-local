@@ -16,26 +16,36 @@ public class Player {
 
 	public Player(String name) {
 		this.name = name;
-		this.frames = new ArrayList<Frame>();
+//		this.frames = new ArrayList<Frame>();
+		this.frames = initFrames();
 		this.result = Result.initResult();
 	}
 	
-//	public Player initPlayer(String name) {
-//		Player player = new Player();
-//		player.name = name;
-//		this.result = Result.initResult();
-//		this.frames = new ArrayList<Frame>();
-//		return null;
-//	}
-
+	public List<Frame> initFrames() {
+		List<Frame> frames = new ArrayList<>();
+		for(int i = 0; i < 9; i++) {
+			frames.add(new Frame());
+		}
+		frames.add(new LastFrame());
+		return frames;
+	}
+	private int temp = 0;
 	public void playRound() {
-		Frame frame = new Frame();
+		Frame frame = frames.get(temp++);
 		while (frame.haveChance()) {
 			frame.inputKnockedPins(BowlingFormView.inputKnockedPins(name));
 		}
-		frames.add(frame);
+//		frames.add(frame);
 		result.update(frame.getPoint());
 	}
+//	public void playRound() {
+//		Frame frame = new Frame();
+//		while (frame.haveChance()) {
+//			frame.inputKnockedPins(BowlingFormView.inputKnockedPins(name));
+//		}
+//		frames.add(frame);
+//		result.update(frame.getPoint());
+//	}
 
 	public String getResultScore(int index) {
 		return result.getScore(index);

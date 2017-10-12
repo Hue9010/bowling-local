@@ -67,13 +67,11 @@ public class Result {
 		if ((kncokPosition - scorePosition) == 2) {
 			String[] secondNextFrame = knockedPins.get(scorePosition + 2).split("");
 			addScore(nextFrame[0], secondNextFrame[0]);
-//			score += 10;
 			checkScores();
 			return;
 		}
 		score += 10;
 		if (nextFrame.length > 2) {
-//			score += 10;
 			addScore(nextFrame[0], nextFrame[2]);
 			return;
 		}
@@ -88,9 +86,12 @@ public class Result {
 	}
 
 	private void calculateScore(String point) {
+		if (scorePosition == 9) {
+			lastScore();
+			return;
+		}
 		String[] pointArr = point.split("");
 		if (isStrike(point.charAt(0))) {
-//			score += 10;
 			return;
 		}
 		if (isSpare(point.charAt(2))) {
@@ -98,6 +99,15 @@ public class Result {
 			return;
 		}
 		addScore(pointArr[0], pointArr[2]);
+	}
+
+	private void lastScore() {
+		String pins = knockedPins.get(kncokPosition - 1);
+		String[] pinArray = pins.split("");
+		if (pinArray.length > 4) {
+			score += addScore(pinArray[4]);
+		}
+		addScore(pinArray[0], pinArray[2]);
 	}
 
 	private int addScore(String score) {
